@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour {
 
 	public Vector2 moveValue;
 	public float speed;
+	private int count;
+	
+	void Start(){
+		count = 0;
+	}
 
 	void OnMove ( InputValue value ) {
 		moveValue = value.Get<Vector2>() ;
@@ -17,4 +22,12 @@ public class PlayerController : MonoBehaviour {
 		//Debug.Log("Moved" + movement);
 		GetComponent<Rigidbody>().AddForce ( movement * speed * Time.fixedDeltaTime ) ;
 	}
+
+	void OnTriggerEnter ( Collider other ) {
+		if( other.gameObject.tag == " PickUp " ) {
+			other.gameObject.SetActive ( false ) ;
+			count++;
+		}
+	}
+
 }
