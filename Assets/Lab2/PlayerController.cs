@@ -10,12 +10,11 @@ public class PlayerController : MonoBehaviour {
 
 	void OnMove ( InputValue value ) {
 		moveValue = value.Get<Vector2>() ;
-		//Debug.Log("Moved" + movement);
 	}
 
 	void FixedUpdate () {
 		Vector3 movement = new Vector3 ( moveValue.x , 0.0f , moveValue.y ) ;
-		Debug.Log("Moved" + movement);
+		//Debug.Log("Moved" + movement);
 		GetComponent<Rigidbody>().AddForce ( movement * speed * Time.fixedDeltaTime ) ;
 	}
 }
